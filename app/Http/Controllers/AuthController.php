@@ -15,4 +15,9 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
+    public function register_post(Request $request)
+    {
+        dd($request->all());
+    }
+
 }

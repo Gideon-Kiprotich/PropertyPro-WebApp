@@ -5,3 +5,4 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', [AuthController::class, 'login']);
 Route::get('register', [AuthController::class, 'register']);
+Route::post('register', [AuthController::class, 'register_post']);

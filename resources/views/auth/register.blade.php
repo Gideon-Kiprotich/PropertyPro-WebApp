@@ -10,11 +10,19 @@
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3 needs-validation" novalidate method="post" action="{{ url('register') }}">
+                    {{ csrf_field() }}
+
                     <div class="col-12">
-                      <label for="yourName" class="form-label">Your Name</label>
+                      <label for="yourName" class="form-label">First Name</label>
                       <input type="text" name="name" class="form-control" id="yourName" required>
-                      <div class="invalid-feedback">Please, enter your name!</div>
+                      <div class="invalid-feedback">Please, enter your first name!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourName" class="form-label">Last Name</label>
+                      <input type="text" name="last_name" class="form-control" id="yourName" required>
+                      <div class="invalid-feedback">Please, enter your last name!</div>
                     </div>
 
                     <div class="col-12">
@@ -24,12 +32,9 @@
                     </div>
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
-                      <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please choose a username.</div>
-                      </div>
+                      <label for="yourName" class="form-label">Mobile Number</label>
+                      <input type="text" name="mobile" class="form-control" id="yourName" required oninput="javascript: this.value = this.value.replace(/[^0-9]/g, ''); if (this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength);" maxlength="10">
+                      <div class="invalid-feedback">Please, enter your mobile number!</div>
                     </div>
 
                     <div class="col-12">
@@ -39,8 +44,14 @@
                     </div>
 
                     <div class="col-12">
+                      <label for="yourPassword" class="form-label">Confirm Password</label>
+                      <input type="password" name="confirm_password" class="form-control" id="yourPassword" required>
+                      <div class="invalid-feedback">Please enter your confirm password!</div>
+                    </div>
+
+                    <div class="col-12">
                       <div class="form-check">
-                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                        <input class="form-check-input" name="remember" type="checkbox" value="" id="acceptTerms" required>
                         <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
                         <div class="invalid-feedback">You must agree before submitting.</div>
                       </div>
