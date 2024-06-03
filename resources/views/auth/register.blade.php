@@ -14,45 +14,55 @@
                     {{ csrf_field() }}
 
                     <div class="col-12">
-                      <label for="yourName" class="form-label">First Name</label>
-                      <input type="text" name="name" class="form-control" id="yourName" required>
+                      <label class="form-label">First Name</label>
+                      <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                      <span style="color: red">{{ $errors->first('name') }}</span>
                       <div class="invalid-feedback">Please, enter your first name!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourName" class="form-label">Last Name</label>
-                      <input type="text" name="last_name" class="form-control" id="yourName" required>
+                      <label class="form-label">Last Name</label>
+                      <input type="text" name="last_name" class="form-control" value="{{ old('last_name') }}">
                       <div class="invalid-feedback">Please, enter your last name!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">Your Email</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" required>
+                      <label class="form-label">Your Email</label>
+                      <input type="email" name="email" value="{{ old('email') }}" class="form-control" required>
+                      <span style="color: red">{{ $errors->first('email') }}</span>
                       <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourName" class="form-label">Mobile Number</label>
-                      <input type="text" name="mobile" class="form-control" id="yourName" required oninput="javascript: this.value = this.value.replace(/[^0-9]/g, ''); if (this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength);" maxlength="10">
+                      <label class="form-label">Mobile Number</label>
+                      <input type="text" name="mobile" class="form-control" value="{{ old('mobile') }}" oninput="javascript: this.value = this.value.replace(/[^0-9]/g, ''); if (this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength);" maxlength="10">
                       <div class="invalid-feedback">Please, enter your mobile number!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <label class="form-label">Address</label>
+                      <input type="text" name="address" class="form-control" value="{{ old('address') }}">
+                      <div class="invalid-feedback">Please, enter your address!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <labe class="form-label">Password</labe>
+                      <input type="password" name="password" class="form-control" required>
+                      <span style="color: red">{{ $errors->first('password') }}</span>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">Confirm Password</label>
-                      <input type="password" name="confirm_password" class="form-control" id="yourPassword" required>
+                      <label class="form-label">Confirm Password</label>
+                      <input type="password" name="confirm_password" class="form-control" required>
+                      <span style="color: red">{{ $errors->first('confirm_password') }}</span>
                       <div class="invalid-feedback">Please enter your confirm password!</div>
                     </div>
 
                     <div class="col-12">
                       <div class="form-check">
-                        <input class="form-check-input" name="remember" type="checkbox" value="" id="acceptTerms" required>
-                        <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                        <input class="form-check-input" name="remember" type="checkbox" value="" required>
+                        <label class="form-check-label">I agree and accept the <a href="#">terms and conditions</a></label>
                         <div class="invalid-feedback">You must agree before submitting.</div>
                       </div>
                     </div>
