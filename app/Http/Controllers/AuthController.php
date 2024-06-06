@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 //use Hash;
 //use Str;
 
@@ -13,6 +14,30 @@ class AuthController extends Controller
     public function login()
     {
         return view('auth.login');
+    }
+
+    public function login_post(Request $request)
+    {
+        //dd($request->all());
+        $remember = !empty($request->remember) ? true : false;
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember))
+        {
+            if(Auth::user()->is_admin == 0)
+            {
+                return redirect('user/dashboard');
+            }
+            else if(Auth::user()->is_admin == 1)
+            {
+                return redirect('admin/dashboard');
+            }
+            else if(Auth::user()->is_admin == 2)
+            {
+                return redirect('vendor/dashboard');
+            }
+        }else{
+            return redirect()->back()->with('error', 'Please enter correct email and password');
+        }
     }
 
     public function register()
